@@ -839,11 +839,10 @@
       }
 
       try {
-        await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify({ prenom, nom, email, telephone })
+        const params = new URLSearchParams({ prenom, nom, email, telephone });
+        await fetch(`${APPS_SCRIPT_URL}?${params}`, {
+          method: 'GET',
+          mode: 'no-cors'
         });
         // Response is opaque with no-cors — assume success if no throw
         showSuccess();
