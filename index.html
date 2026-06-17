@@ -840,9 +840,10 @@
 
       try {
         const params = new URLSearchParams({ prenom, nom, email, telephone });
-        await fetch(`${APPS_SCRIPT_URL}?${params}`, {
-          method: 'GET',
-          mode: 'no-cors'
+        await new Promise((resolve) => {
+          const img = new Image();
+          img.onload = img.onerror = resolve;
+          img.src = `${APPS_SCRIPT_URL}?${params}`;
         });
         // Response is opaque with no-cors — assume success if no throw
         showSuccess();
