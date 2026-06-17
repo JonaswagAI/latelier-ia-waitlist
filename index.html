@@ -30,7 +30,6 @@
     html { scroll-behavior: smooth; }
 
     body {
-      touch-action: pan-y;
       background: var(--black);
       color: var(--white);
       font-family: 'DM Sans', sans-serif;
@@ -710,19 +709,7 @@
   </footer>
 
   <script>
-    // Disable pinch-to-zoom on iOS Safari (ignores user-scalable=no since iOS 10)
-    document.addEventListener('touchmove', function(e) {
-      if (e.touches.length > 1) e.preventDefault();
-    }, { passive: false });
-
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(e) {
-      const now = Date.now();
-      if (now - lastTouchEnd < 300) e.preventDefault();
-      lastTouchEnd = now;
-    }, { passive: false });
-
-    // ─── AI PARTICLE NETWORK ──────────────────────────────────────────────────
+    // ─── AI PARTICLE NETWORK (mobile only) ────────────────────────────────────
     (function () {
       const canvas = document.getElementById('ai-canvas');
       if (!canvas) return;
