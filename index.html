@@ -841,8 +841,8 @@
       try {
         await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors', // Google Apps Script requires no-cors
-          headers: { 'Content-Type': 'application/json' },
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ prenom, nom, email, telephone })
         });
         // Response is opaque with no-cors — assume success if no throw
